@@ -1,0 +1,7 @@
+appName: demo-spring-boot
+namespace: default
+appVersion: latest
+replicaCount: 1
+image:
+  registry: gateixeira
+  pullPolicy: Never

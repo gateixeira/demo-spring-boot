@@ -4,7 +4,8 @@ build() {
     echo "Gradlew build - demo-spring-boot"
     ./gradlew build
     echo "Docker build - demo-spring-boot"
-    docker build --rm --no-cache -t gateixeira/demo-spring-boot:0.1.0 .
+    eval $(minikube docker-env)
+    docker build --rm --no-cache -t gateixeira/demo-spring-boot:latest .
 }
 
 stop() {

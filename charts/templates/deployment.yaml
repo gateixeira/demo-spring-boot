@@ -19,4 +19,20 @@ spec:
         - name: "{{ .Values.appName }}"
           image: "{{ .Values.image.registry }}/{{ .Values.appName }}:{{ .Values.appVersion }}"
           imagePullPolicy: "{{ .Values.image.pullPolicy }}"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 3
+            successThreshold: 1
+            failureThreshold: 1
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: 8080
+            initialDelaySeconds: 15
+            periodSeconds: 5
+            successThreshold: 1
+            failureThreshold: 1
       restartPolicy: Always
